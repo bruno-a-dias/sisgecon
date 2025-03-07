@@ -1,0 +1,148 @@
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gerenciador de Condomínio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"></link>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const unitSelect = document.getElementById('unit-select');
+            const residentForm = document.getElementById('resident-form');
+            const vehicleForm = document.getElementById('vehicle-form');
+
+            unitSelect.addEventListener('change', function () {
+                const selectedUnit = unitSelect.value;
+                if (selectedUnit) {
+                    residentForm.classList.remove('hidden');
+                    vehicleForm.classList.remove('hidden');
+                } else {
+                    residentForm.classList.add('hidden');
+                    vehicleForm.classList.add('hidden');
+                }
+            });
+        });
+    </script>
+</head>
+<body class="font-roboto bg-gray-100">
+    <header class="bg-blue-600 text-white p-4">
+        <div class="container mx-auto flex justify-between items-center">
+            <h1 class="text-2xl font-bold">Gerenciador de Condomínio</h1>
+            <nav>
+                <ul class="flex space-x-4">
+                    <li><a href="#" class="hover:underline">ARQUIVOS</a></li>
+                    <li><a href="#" class="hover:underline">RELATÓRIOS</a></li>
+                    <li><a href="#" class="hover:underline">DIVERSOS</a></li>
+                    <li><a href="#" class="hover:underline">CONTATOS</a></li>
+                    <li><a href="#" class="hover:underline">SOBRE</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container mx-auto p-4">
+        <section class="bg-white p-6 rounded shadow-md mb-6">
+            <h2 class="text-xl font-bold mb-4">Cadastro das Unidades</h2>
+            <form class="space-y-4">
+                <div>
+                    <label for="unit-number" class="block text-sm font-medium text-gray-700">Número da Unidade</label>
+                    <input type="text" id="unit-number" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2">
+                </div>
+                <div>
+                    <label for="unit-owner" class="block text-sm font-medium text-gray-700">Proprietário</label>
+                    <input type="text" id="unit-owner" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2">
+                </div>
+                <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded">Cadastrar Unidade</button>
+            </form>
+        </section>
+
+        <section class="bg-white p-6 rounded shadow-md mb-6">
+            <h2 class="text-xl font-bold mb-4">Selecione a Unidade</h2>
+            <div>
+                <label for="unit-select" class="block text-sm font-medium text-gray-700">Unidade</label>
+                <select id="unit-select" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2">
+                    <option value="">Selecione uma unidade</option>
+                    <option value="1">Unidade 1</option>
+                    <option value="2">Unidade 2</option>
+                    <option value="3">Unidade 3</option>
+                </select>
+            </div>
+        </section>
+
+        <section id="resident-form" class="bg-white p-6 rounded shadow-md mb-6 hidden">
+            <h2 class="text-xl font-bold mb-4">Cadastro dos Moradores</h2>
+            <form class="space-y-4">
+                <div>
+                    <label for="resident-name" class="block text-sm font-medium text-gray-700">Nome do Morador</label>
+                    <input type="text" id="resident-name" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2">
+                </div>
+                <div>
+                    <label for="resident-unit" class="block text-sm font-medium text-gray-700">Unidade</label>
+                    <input type="text" id="resident-unit" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2" readonly>
+                </div>
+                <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded">Cadastrar Morador</button>
+            </form>
+        </section>
+
+        <section id="vehicle-form" class="bg-white p-6 rounded shadow-md mb-6 hidden">
+            <h2 class="text-xl font-bold mb-4">Cadastro dos Veículos</h2>
+            <form class="space-y-4">
+                <div>
+                    <label for="vehicle-plate" class="block text-sm font-medium text-gray-700">Placa do Veículo</label>
+                    <input type="text" id="vehicle-plate" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2">
+                </div>
+                <div>
+                    <label for="vehicle-model" class="block text-sm font-medium text-gray-700">Modelo do Veículo</label>
+                    <input type="text" id="vehicle-model" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2">
+                </div>
+                <div>
+                    <label for="vehicle-unit" class="block text-sm font-medium text-gray-700">Unidade</label>
+                    <input type="text" id="vehicle-unit" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2" readonly>
+                </div>
+                <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded">Cadastrar Veículo</button>
+            </form>
+        </section>
+
+        <section class="bg-white p-6 rounded shadow-md mb-6">
+            <h2 class="text-xl font-bold mb-4">Emissão de Relatórios</h2>
+            <form class="space-y-4">
+                <div>
+                    <label for="report-type" class="block text-sm font-medium text-gray-700">Tipo de Relatório</label>
+                    <select id="report-type" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2">
+                        <option>Unidades</option>
+                        <option>Moradores</option>
+                        <option>Veículos</option>
+                    </select>
+                </div>
+                <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded">Emitir Relatório</button>
+            </form>
+        </section>
+
+        <section class="bg-white p-6 rounded shadow-md mb-6">
+            <h2 class="text-xl font-bold mb-4">Contato com o Responsável</h2>
+            <form class="space-y-4">
+                <div>
+                    <label for="contact-name" class="block text-sm font-medium text-gray-700">Seu Nome</label>
+                    <input type="text" id="contact-name" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2">
+                </div>
+                <div>
+                    <label for="contact-email" class="block text-sm font-medium text-gray-700">Seu Email</label>
+                    <input type="email" id="contact-email" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2">
+                </div>
+                <div>
+                    <label for="contact-message" class="block text-sm font-medium text-gray-700">Mensagem</label>
+                    <textarea id="contact-message" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2"></textarea>
+                </div>
+                <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded">Enviar Mensagem</button>
+            </form>
+        </section>
+    </main>
+
+    <footer class="bg-blue-600 text-white p-4 mt-6">
+        <div class="container mx-auto text-center">
+            <p>&copy; 2023 Gerenciador de Condomínio. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+</body>
+</html>
